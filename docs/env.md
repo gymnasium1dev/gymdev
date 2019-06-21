@@ -1,103 +1,128 @@
-> *!!!!* 
-> ВСЕ МАНИПУЛЯЦИИ С ПЕРЕМЕННОЙ PATH ВЫПОЛНЯЮТСЯ ТОЛЬКО ПЕРВЫЙ РАЗ ДЛЯ ПЕРВОГО ПРОЕКТА, ДЛЯ ПОСЛДУЮЩИХ ЭТОТ ШАГ ПРОПУСТИТЬ
+# Подготовка рабочего пространства
 
-# 1 Подготовка рабочего пространства.
+Все манипуляции с переменной `PATH` выполняются **только один раз** для первого проекта, для последующих этот шаг **следует пропустить**
 
-## 1.1 установка Flutter
+## Установка Flutter
 
-- https://flutter.dev/docs/development/tools/sdk/releases
-- скачать первый архив в таблице Stable channel (Windows)
+- [Загрузить](https://flutter.dev/docs/development/tools/sdk/releases) первый архив в таблице `Stable channel (Windows)`
 
-- распокавать архив и положить папку flutter в корень диска C:\
-    должно получится C:\flutter
+- распаковать архив и положить папку flutter в корень диска C:\
+  *должно получится C:\flutter*
 
-- Добавить в PATH
+- [Добавить](#PATH) в PATH
+  - *С:\flutter\bin*
+  - *С:\flutter\bin\cache\dart-sdk\bin*
 
-    - С:\flutter\bin
-    - С:\flutter\bin\cache\dart-sdk\bin 
+- Проверка установки
+  - запустить cmd (win + r -> ввести cmd -> нажать Enter(или открыть)
+  - ввести `flutter doctor`,
+    нажать Enter
 
->PATH: компьютер -> правый клик -> свойства -> 
-(с лева) дополнительные параметры системы -> 
-(внизу) параметры среды -> (верхний список) клик по PATH -> 
-изменить -> в значение переменной вставить путь 
+>В случае ошибки проверить переменную [PATH](#PATH)
 
+### PATH
 
->**WINDOW 7** значения должны быть разделены ; без пробелов!!!
+PATH - это переменная окружения, которая является набором каталогов содержащих исполняемые файлы.
 
-```BASH
+Для установки добавления нового каталога в переменную на компьютерах под управлением OS Windows 10 необходимо открыть компьютер -> правый клик -> свойства ->
+(с лева) дополнительные параметры системы ->
+(внизу) параметры среды -> (верхний список) клик по PATH ->
+изменить -> в значение переменной вставить путь
+
+>**Windows 7** значения должны быть разделены ; без пробелов!!!
+
+```path
 С:\flutter\bin;С:\flutter\bin\cache\dart-sdk\bin;
 ```
 
-- Проверить установку 
-    запустить cmd (win + r -> ввести cmd -> нажать Enter(или открыть),
-    ввести `flutter doctor`,
-    нажать Enter
+## Установить AndroidStudio
 
->В случае ошибки проведить переменную PATH из предыдущего шага
-
-- Для работы Flutter Web и Flutter Desktop в cmd ввести `flutter channel master && flutter upgrade`
-
-## 1.2 Установить AndroidStudio
-- https://developer.android.com/studio скачать и установить все предлогаемые сдк.
+- [Скачать](https://developer.android.com/studio) и установить все предлагаемые SDK.
 - Запустить. На приветственном экране зайти в меню Configure -> AVD Manager
 - Создать виртуальный девайс
-  - выбрать устройство (предпачтительно Pixel) 
+  - выбрать устройство (предпочтительно Pixel)
   - скачать API 27 (Pie)
-  - Далее все поумолчанию. Запустить виртуальное устройство для проверки
+  - Далее все по умолчанию. Запустить виртуальное устройство для проверки
 
-## 1.3 Установить Visual Studio Code
+## Установить Visual Studio Code
+
 - https://code.visualstudio.com/
 
 ### Установить плагины для Visual Studio Code (Flutter)
 
 - открыть VS Code
-- ctrl+shift+x
+- `ctrl+shift+x`
 - в строке поиска `Flutter`
 - первый в поиске плагин
 - Install
-- Проверить работоспособность созданием нового проекта (ctrl+shift+p -> Flutter: New Project)
-- F5 для запустить проекта в эмуляторе или физическом устройстве
 
-# 2 Flutter Desktop
+### Create Project
+
+- Проверить работоспособность созданием нового проекта `ctrl+shift+p -> Flutter: New Project`
+- `F5` для запустить проекта в эмуляторе или физическом устройстве
+
+### Запуск на устройстве
+
+Для запуска на физическом устройстве необходимо активировать "Режим Разработчика". Для этого нужно открыть Настройки -> О телефоне -> 5 раз тапнуть на строку "номер сборки", должно появится всплывающее сообщение "Вы стали разработчиком". После чего вернуть назад, в меню настроек должна появится вкладка "Для разработчиков", там необходимо активировать пункт "Разрешить отладку по USB {ADB}"
+
+# Flutter Desktop
+
+## Flutter Channels
+Для работы Flutter Web и Flutter Desktop должен находится в ветке `master`
+
+Проверить ветку можно командой в CMD `flutter channel`
+
+```Bash
+Flutter channels:
+ beta
+ dev
+*master
+ stable
+```
+
+`*` означает выбранную ветку, она должна стоять рядом с мастер, в противном случае нужно изменить текущую ветку
+
+`flutter channel master && flutter upgrade`
 
 ## Установить Microsoft Visual Studio 20{ГОД} (=< 17)
-https://visualstudio.microsoft.com/ru/downloads/
 
-- Visual Studio 20{год} Community
-- запустится компановщик
+- [Скачать](https://visualstudio.microsoft.com/ru/downloads/) Visual Studio 20{год} Community
+- запустится компоновщик
 - поставить галочку в разделе "Desktop Development C++"
-- *установить*
+- установить
 
-перевести в вветку master
-*для запуска десктоп приложений необходимо:*
+## Подготовка проекта
 
-- **2.1 Добавить в PATH путь к сдк с++**
-    у меня он 
-    *C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build*
-    **!!!МОЖЕТ ОТЛИЧАТЬСЯ ГОД!!!**
-- **2.2 Создать новое приложение flutter в Intellij**
-- **2.3 в main.dart добавить импорты** 
+- Добавить в PATH путь к sdk с++
+    у меня он `C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build`
+- Создать новое приложение flutter в VS CODE ([Создание проекта](#Create-Project))
+- Добавить импорты в main.dart
 
 ```dart
 import 'dart:io' show Platform;
 import 'package:flutter/foundation.dart' show debugDefaultTargetPlatformOverride;
 ```
-- **2.3 изменить функцую main в main.dart**
-c 
+
+- изменить функцую `main()` в lib/main.dart
+
+c
+
 ```dart
 void main => runApp(MyApp());
 ```
 
 на
+
 ```dart
 void main() {
   debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
   runApp(MyApp());
 }
 ```
-- **2.4 Из папки ForDesktop windows, macos, linux копировать в корень проекта**
-    должно получится
-```
+
+- Из папки [ForDesktop](https://yadi.sk/d/PfTuqBQUOzeKBg) `windows, macos, linux` копировать в корень проекта, должно получится
+
+```DIR
  project
     android
     ios
@@ -107,34 +132,26 @@ void main() {
     windows
     pubspec.yaml
 ```
-    
-- **2.5 в терминале Intellij последовательно ввести 2 команды**
+
+- В терминале VSCode(ctrl+shift+~) последовательно ввести
 `flutter packages get`
 
-`flutter precache --windows`
-
-- **2.6 установить переменную среды (*в том же терминале*)**
-
-`set ENABLE_FLUTTER_DESKTOP=true`
-
-**ВНИМАНИЕ переменную необходимо устанавливать каждый раз при открытии терминала!!!**
-
-- **2.7 проверить что все хорошо командой**
+- Проверить что Flutter SDK готов для сборки под windows командой
 `flutter devices`
 
-*должен быть ответ вроде*
+предполагаемый ответ
 
 ```bash
 1 connected device:
 
 Windows • Windows • windows-x64 • Microsoft Windows [Version 6.1.7601]
 ```
- 
-**значит все хорошо и можно запустить приложение командой**
+
+значит все хорошо и можно запустить приложение командой
 
 `flutter run`
 
-***В случае когда подключенное несколько устройст или эмулятор можно получить подобное сообщение***
+***В случае когда подключенное несколько устройств или эмулятор можно получить подобное сообщение***
 
 ```bash
 More than one device connected; please specify a device with the '-d <deviceId>' flag, or use '-d all' to act on all devices.
@@ -143,19 +160,19 @@ Android SDK built for x86 • emulator-5554 • android-x86 • Android 9 (API 2
 Windows                   • Windows       • windows-x64 • Microsoft Windows [Version 6.1.7601]
 ```
 
-в этом случае для замуска для Десктопа вводим команду
+в этом случае для запуска вводим команду
 
 `flutter run -d DEVICE`
 
-в данном случае для виндовс
+в случае для Windows
 
-```
+```Bash
 flutter run -d windows
 ```
 
 или для запуска на эмуляторе
 
-```
+```Bash
 flutter run -d emulator-5554
 ```
 
@@ -165,53 +182,19 @@ flutter run -d emulator-5554
 **r** хот релоад
 **shift+r** хот рестарт
 
+# Flutter WEB
 
-# 3 Flutter WEB
+- Создать [новый проект](#Create-Project) `Flutter: New Web Project`
 
-- *3.1 создать новый проект в качестве языка выбрать Dart*
-    ( если в Dart SDK path: *not found*)
-    выбрать его руками он расположен в папке flutter
- ```
- C:\flutter\bin\cache\dart-sdk
- ```
-    мой путь такой
+- добавить в [PATH](#PATH)
+*путь к flutter может отличаться!!* мой :
+`c:\flutter\.pub-cache\bin`
 
-- **3.2 Выбрать шаблон** *Flutter Web App*
-
-- **3.3 в терминале Intellij выполнить**
-`flutter pub global activate webdev`
-
-- **3.4 добавить в PATH см 1.1**
-*путь к flutter может отличаться!!* мой такой:
-`c\flutter\.pub-cache\bin`
-
-- **3.5 в терминале Intellij выполнить**
-`flutter pub upgrade`
-
-- **3.6 в терминале Intellij выполнить**
+- в терминале VS CODE выполнить
 `webdev serve --auto refresh`
 
-- **3.7 открыть localhost:8080** в браузере
+- открыть localhost:8080 в браузере (предпочтительно Google Chrome)
 
-**Для поддержки иконок не обходимо допавить папку assets из ForWeb в папку web в проекте**
+Для поддержки иконок необходимо добавить папку `assets` из [ForWeb](https://yadi.sk/d/PfTuqBQUOzeKBg) в папку `web` в проекте
 
-**Для изменения применяются автоматически, необходимо просто кликнуть по браузеру**
-
-
-# Минимальная версия флаттера 1.5!
-проверить свою версию можнов в cmd
-``flutter doctor``
-
-если версия ниже
-выполнить в cmd
-
-```
-flutter upgrade
-```
-
-
-
-
-
-
-
+>Изменения применяются автоматически после сохранения редактируемого файла
