@@ -984,6 +984,198 @@ TODO
 
 ## Ветвление. Операторы управления потоком
 
-## Исключения
+Вы можете контролировать поток своего кода, используя следующие операторы:
 
+- if и else
+- цикл for
+- while и do-while циклы
+- break и continue
+- switch и case
+- assert
+
+Вы также можете влиять на поток, используя try-catch и throw, как описано в разделе «Исключения».
+
+### if else
+
+Dart поддерживает операторы if с дополнительными операторами else, как показано в следующем примере.
+
+```dart
+if (isRaining()) {
+  you.bringRainCoat();
+} else if (isSnowing()) {
+  you.wearJacket();
+} else {
+  car.putTopDown();
+}
+```
+
+В отличие от JavaScript, условия должны использовать ТОЛЬКО логические значения.
+
+### Цикл For
+
+Вы можете выполнять итерации со стандартным циклом `for`. Например:
+
+```dart
+var message = StringBuffer('Dart is fun');
+for (var i = 0; i < 5; i++) {
+  message.write('!');
+}
+```
+
+Замыкания внутри циклов `for` в Dart фиксируют значение индекса, избегая распространенной ошибки, обнаруженной в JavaScript.
+
+```dart
+var callbacks = [];
+for (var i = 0; i < 2; i++) {
+  callbacks.add(() => print(i));
+}
+callbacks.forEach((c) => c());
+```
+
+Если объект, который вы используете, является Iterable, вы можете использовать метод `forEach()`. Использование `forEach()` является хорошим вариантом, если вам не нужно знать текущий счетчик итераций:
+
+```dart
+candidates.forEach((candidate) => candidate.interview());
+```
+
+Итерируемые объекты, такие как `List` и `Set`, также поддерживают форму итерации `for-in`:
+
+```dart
+var collection = [0, 1, 2];
+for (var x in collection) {
+  print(x); // 0 1 2
+}
+```
+
+### While и do-while
+
+Цикл `while` перед исполнением тела цикла, проверяет условие
+
+```dart
+while (!isDone()) {
+  doSomething();
+}
+```
+
+Цикл `do while` сначала исполняет тело цикла, а затем проверяет условие
+
+```dart
+do {
+  printLine();
+} while (!atEndOfPage());
+```
+
+### Break и continue
+
+Используйте `break` для прирывания цикла
+
+```dart
+while (true) {
+  if (shutDownRequested()) break;
+  processIncomingRequests();
+}
+```
+
+Для пропуска текущей итерации используйте `continue`:
+
+```dart
+for (int i = 0; i < candidates.length; i++) {
+  var candidate = candidates[i];
+  if (candidate.yearsExperience < 5) {
+    continue;
+  }
+  candidate.interview();
+}
+```
+
+Даный пример можно написать по-другому, если вы используете Iterable, такой как `List` или `Set`:
+
+```dart
+candidates
+    .where((c) => c.yearsExperience >= 5)
+    .forEach((c) => c.interview());
+```
+
+### Switch case
+
+Оператор `Switch` в Dart сравнивают целочисленные, строковые или константы времени компиляции, используя `==`. Все сравниваемые объекты должны быть экземплярами одного и того же класса (а не каких-либо его подтипов), и класс не должен переопределять `==`.
+
+Каждый `case` должне заканчиватся `break, continue, throw или return`
+
+```dart
+var command = 'OPEN';
+switch (command) {
+  case 'CLOSED':
+    executeClosed();
+    break;
+  case 'PENDING':
+    executePending();
+    break;
+  case 'APPROVED':
+    executeApproved();
+    break;
+  case 'DENIED':
+    executeDenied();
+    break;
+  case 'OPEN':
+    executeOpen();
+    break;
+  default:
+    executeUnknown();
+}
+```
+
+В следующем примере в операторе `case` пропущен оператор `break`, что приводит к ошибке:
+
+```dart
+var command = 'OPEN';
+switch (command) {
+  case 'OPEN':
+    executeOpen();
+    // ERROR: Пропущен break
+
+  case 'CLOSED':
+    executeClosed();
+    break;
+}
+```
+
+Тем не менее, Dart поддерживает пустые предложения case:
+
+```dart
+var command = 'CLOSED';
+switch (command) {
+  case 'CLOSED':
+  case 'NOW_CLOSED':
+    executeNowClosed();
+    break;
+}
+```
+
+### Assert
+
+Во время разработки можно использовать оператор `assert()`. Это оператор необязательного сообщения об ошибке. Данные оператор будет пробущен при компеляции production кода.
+
+```dart
+// проверка переменной на null
+assert(text != null);
+
+// проверка меньше ли значение переменно 100.
+assert(number < 100);
+
+// проверка является ли адресс https.
+assert(urlString.startsWith('https'));
+```
+
+Чтобы прикрепить сообщение к утверждению, добавьте строку в качестве второго аргумента для утверждения.
+
+```dart
+assert(urlString.startsWith('https'),
+    'URL ($urlString) should start with "https".');
+```
+
+Первым аргументом `assert` может быть любое выражение, результат которого логическое значение. Если значение выражения истинно, печатается утверждение и выполнение продолжается. Если значение равно `false`, утверждение не выполняется и генерируется исключение (`AssertionError`).
+
+## Исключения
+ 
 ## Классы
