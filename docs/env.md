@@ -229,3 +229,11 @@ flutter run -d emulator-5554
 `flutter run -d chrome`
 
 >Должен быть установлен браузер Google Chrome
+
+## Самый простой
+
+- Созадть новый прокет в VS CODE (ctrl+shift+P -> Flutter: New Project)
+
+- Из  [ForWeb2](https://yadi.sk/d/PfTuqBQUOzeKBg) взять `web` и положить в корень проекта
+
+- Запустить проект командой `flutter run -d chrome`
