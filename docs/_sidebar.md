@@ -1,0 +1,38 @@
+# docs
+
+- **DART**
+- [Простая программа](./dart_tour/1_simple_prog/1_simple_prog.md)
+- [Важные понятия](./dart_tour/2_warnings/2_warnings.md)
+- [1. Переменные](./dart_tour/3_var/3_var.md)
+  - [Значения по умолчанию](./dart_tour/3_var/3_1_default.md)
+  - [Final / Const](./dart_tour/3_var/3_2_final_const.md)
+- [2. Типы данных](dart_tour/4_types/4_types.md)
+  - [Числа](dart_tour/4_types/4_1_num.md)
+  - [Строки](dart_tour/4_types/4_2_str.md)
+  - [Логические](dart_tour/4_types/4_3_bool.md)
+  - [Массив](dart_tour/4_types/4_4_list.md)
+  - [Набор](dart_tour/4_types/4_5_set.md)
+  - [Карта](dart_tour/4_types/4_6_map.md)
+- [3. Функции](dart_tour/5_func/5_func.md)
+  - [Необязательные параметры](dart_tour/5_func/5_1_nonreq_params.md)
+  - [Необязательные именованные параметры](dart_tour/5_func/5_2_nonreq_named_params.md)
+- [4. Операторы](dart_tour/6_operators/6_operators.md)
+  - [Математические](dart_tour/6_operators/6_1_math.md)
+  - [Стравнение](dart_tour/6_operators/6_2_math_eq.md)
+  - [Проверка типа](dart_tour/6_operators/6_3_type_check.md)
+  - [Присваивание](dart_tour/6_operators/6_4_add_val.md)
+  - [Логические](dart_tour/6_operators/6_5_logic.md)
+  - [Условные выражения](dart_tour/6_operators/6_6_exp.md)
+  - [Другие](dart_tour/6_operators/6_7_others.md)
+- **Flutter env**
+- [Подготовка рабочего окружения](flutter_env/1_warning.md)
+  - [Установка Flutter SDK](flutter_env/2_setup_flutter.md)
+    - [Проверка установки](flutter_env/2_1_check.md)
+    - [Команды Flutter](flutter_env/2_2_comands.md)
+  - [PAHT](flutter_env/3_path.md)
+  - [VS Code](flutter_env/4_vs_code.md)
+  - [WEB](flutter_env/5_web.md)
+  - [Android](flutter_env/6_android.md)
+  - [Descktop](flutter_env/7_desktop.md)
+- **Flutter**
+- **GO**

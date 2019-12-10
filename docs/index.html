@@ -15,9 +15,17 @@
     window.$docsify = {
       name: 'gymdev',
       repo: 'https://github.com/maxnemoy/gymdev',
-      loadNavbar: true
+      alias: {
+          '/.*/_sidebar.md': '/_sidebar.md'
+        },
+      //loadNavbar: true,
+      loadSidebar: true,
+      auto2top: true,
+      search: 'auto',
+      
     }
   </script>
+  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-dart.min.js"></script>
